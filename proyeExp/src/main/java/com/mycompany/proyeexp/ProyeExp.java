@@ -43,10 +43,13 @@ public class ProyeExp {
                     int seleccion = JOptionPane.showOptionDialog(null, "Seleccione una Especialidad:", "Selección", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcionesMed, opcionesMed[0]);
                     String select = String.valueOf(seleccion);  
                     String horaAlmuerzo = JOptionPane.showInputDialog("Ingrese la hora de almuerzo\n");
-                    
+                    System.out.println(select);
                     
                     medicos[indiceMed] = new Medico(nombreMedico,select, Integer.parseInt(horaAlmuerzo));
-                    medicos[indiceMed].getHorario().añadirHoraAlm(Integer.parseInt(horaAlmuerzo));
+                    Agenda temp = medicos[indiceMed].getHorario();
+                    temp.añadirHoraAlm(Integer.parseInt(horaAlmuerzo));
+                    medicos[indiceMed].setHorario(temp);
+                    //medicos[indiceMed].getHorario().imprimir();
                     indiceMed+=1;
                     
 
@@ -122,6 +125,7 @@ public class ProyeExp {
         for (int i = 0; i < indiceMed; i++) {
             if (medicos[i].getEspecialidad().equals(especialidad)) {
                 int horasEsp = medicos[i].getHorario().buscarEsp(medicos[i]);
+                medicos[i].getHorario().imprimir();
                 int puede = medicos[i].getHorario().verificarEspacio(dia, mes, hora, horasEsp);
                 System.out.println(puede);
 
@@ -138,22 +142,5 @@ public class ProyeExp {
         return null;
     }
 
-    
-    public Medico buscarMedicoDis(String nombreCliente, String numeroTelefono, String especialidad, int mes, int dia, int hora) {
-        for (int i = 0; i < 5; i++) {
-            if (medicos[i].getEspecialidad().equals(especialidad)) {
-                int horasEsp = medicos[i].getHorario().buscarEsp(medicos[i]);
-                int puede = medicos[i].getHorario().verificarEspacio(dia, mes, hora, horasEsp);
-                
-                if (puede != 0) {
-                    Cita temp = new Cita(nombreCliente, numeroTelefono, hora, 0, 0, medicos[i], LocalDate.of(2024, mes, dia));
-                    if (medicos[i].getHorario().agregarCita(temp) == 2) {
-                        medicos[i].getHorario().agregarCita(temp);
-                        return medicos[i];
-                    }
-                }
-            }
-        }
-        return null;
-    }
+
 }

@@ -12,7 +12,7 @@ import java.time.LocalTime;
 public class Agenda {
     
     private String[][][] horario = new String[12][30][10];
-    private int[] arrayTemp = new int[11];
+    private int[] arrayTemp = new int[10];
     
     public Agenda() {
         inicializarArray();
@@ -37,6 +37,8 @@ public class Agenda {
             return 0;
         }
         
+        insertarCita(nuevaCita.getNombrePaciente() + nuevaCita.getTelefonoPaciente(), mes, dia, horaCita, horasEsp);
+        
         return 2;
         
     }
@@ -44,7 +46,9 @@ public class Agenda {
     public void añadirHoraAlm(int Hora) {
         for (int i = 0; i < 12; i++) {
             for (int j = 0; j < 30; j++) {
+                
                 this.horario[i][j][buscarElemento(Hora)] = "ALMUERZO";
+                
             }
         }
     }
@@ -61,7 +65,7 @@ public class Agenda {
     
     public void inicializarArray() {
         int j = 0;
-        for(int i = 8; i < 19; i++) {
+        for(int i = 8; i < 18; i++) {
             this.arrayTemp[j] = i;
             j++;
         }
@@ -89,12 +93,13 @@ public class Agenda {
     
     public void desaparecerCita(int mes, int dia, int hora, int tiempo) {
         for(int i = hora; i < hora + tiempo; i++) {
-            this.horario[mes-1][dia-1][i] = "VACIO";
+            this.horario[mes-1][dia-1][buscarElemento(i)] = "VACIO";
         } 
     }
     
     public int verificarEspacio (int dia, int mes, int hora, int tiempo) {
         for(int i = hora; i < hora + tiempo; i++) {
+            System.out.println(i);
             if (!(this.horario[mes-1][dia-1][buscarElemento(i)].equals("VACIO"))) {
                 return 0;
             }
@@ -145,6 +150,16 @@ public class Agenda {
         }
         
         return null;
+    }
+    
+    public void imprimir() {
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 30; j++) {
+                for (int k = 0; k < 10; k++) {
+                    System.out.println(this.horario[i][j][k]);
+                }
+            }
+        }
     }
     
 }
