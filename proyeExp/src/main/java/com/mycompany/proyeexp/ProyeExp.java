@@ -19,12 +19,11 @@ public class ProyeExp {
     private static Cita[][][] agenda = new Cita[NUMERO_MESES][NUMERO_DIAS][];
     private static final int MAX_MEDICOS = 5;
     private static final int MAX_HORAS_MEDICO = 10;
-    private static Medico[] medicos = new Medico[MAX_MEDICOS];
     private static  int indiceMed = 0;
     
     
     public static void main(String[] args) {
-
+        
         while (true) {
             String opcion = JOptionPane.showInputDialog("MENU PRINCIPAL\n"
                     + "1. Registro de médicos.\n"

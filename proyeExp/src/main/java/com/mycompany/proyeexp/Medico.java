@@ -10,10 +10,10 @@ public class Medico {
     private LocalTime horaAlmuerzo;
     private Agenda horario;
 
-    public Medico(String nombre, String especialidad, int Hora, int Minutos, int Segundos) {
+    public Medico(String nombre, String especialidad, int Hora) {
         this.nombre = nombre;
         this.especialidad = especialidad;
-        LocalTime horaAlmuerzoTemp = LocalTime.of(Hora, Minutos, Segundos);
+        LocalTime horaAlmuerzoTemp = LocalTime.of(Hora, 0, 0);
         this.horaAlmuerzo = horaAlmuerzoTemp;
     }
 

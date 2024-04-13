@@ -41,6 +41,14 @@ public class Agenda {
         
     }
     
+    public void añadirHoraAlm(int Hora) {
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 30; i++) {
+                this.horario[i][j][Hora] = "ALMUERZO";
+            }
+        }
+    }
+    
     public void inicializarHorario() {
         for (int i = 0; i < 12; i++) {
             for (int j = 0; j < 30; i++) {
@@ -87,7 +95,7 @@ public class Agenda {
     
     public int verificarEspacio (int dia, int mes, int hora, int tiempo) {
         for(int i = hora; i < hora + tiempo; i++) {
-            if (!(this.horario[mes][dia][i].equals("VACIO"))) {
+            if (!(this.horario[mes][dia][i].equals("VACIO")) && !(this.horario[mes][dia][i].equals("ALMUERZO"))) {
                 return 0;
             }
         }
