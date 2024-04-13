@@ -10,13 +10,15 @@ import javax.swing.JOptionPane;
  */
 public class ProyeExp {;
     private static final int MAX_MEDICOS = 5;
+    private static final int MAX_MESES = 12;
+    private static final int MAX_DIAS = 30;
+    private static final int MAX_HORAS_DISP = 10;
+    private static Cita[][][] agenda = new Cita[MAX_MESES][MAX_DIAS][MAX_HORAS_DISP];
     private static Medico[] medicos = new Medico[MAX_MEDICOS];
 
     public static void main(String[] args) {
 
-        boolean continuarProg = true;
-
-        while (continuarProg) {
+        while (true) {
             String opcion = JOptionPane.showInputDialog("MENU PRINCIPAL\n"
                     + "1. Registro de médicos.\n"
                     + "2. Agendar cita \n"
@@ -41,7 +43,7 @@ public class ProyeExp {;
                     break;
                 case "5":
                     JOptionPane.showMessageDialog(null, "Saliendo del programa.");
-                    continuarProg = false;
+                    return;
                 default:
                     JOptionPane.showMessageDialog(null, "Opción no válida. Por favor, ingrese un número del 1 al 5.");
             }
