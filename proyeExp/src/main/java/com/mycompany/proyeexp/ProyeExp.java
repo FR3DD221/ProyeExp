@@ -138,4 +138,22 @@ public class ProyeExp {
         return null;
     }
 
+    
+    public Medico buscarMedicoDis(String nombreCliente, String numeroTelefono, String especialidad, int mes, int dia, int hora) {
+        for (int i = 0; i < 5; i++) {
+            if (medicos[i].getEspecialidad().equals(especialidad)) {
+                int horasEsp = medicos[i].getHorario().buscarEsp(medicos[i]);
+                int puede = medicos[i].getHorario().verificarEspacio(dia, mes, hora, horasEsp);
+                
+                if (puede != 0) {
+                    Cita temp = new Cita(nombreCliente, numeroTelefono, hora, 0, 0, medicos[i], LocalDate.of(2024, mes, dia));
+                    if (medicos[i].getHorario().agregarCita(temp) == 2) {
+                        medicos[i].getHorario().agregarCita(temp);
+                        return medicos[i];
+                    }
+                }
+            }
+        }
+        return null;
+    }
 }
