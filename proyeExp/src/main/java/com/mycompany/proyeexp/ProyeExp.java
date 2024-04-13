@@ -9,15 +9,11 @@ import javax.swing.JOptionPane;
  *
  * @author fredd
  */
-<<<<<<< Updated upstream
-public class ProyeExp {;
+public class ProyeExp {
 
     private static final int MAX_HORAS_DISP = 10;
     private static Medico[] medicos = new Medico[5];
     private static Cita[] agendas = new Cita[365];
-
-=======
-public class ProyeExp {
     private static final int NUMERO_MESES = 12;
     private static final int NUMERO_DIAS = 30;
     private static Cita[][][] agenda = new Cita[NUMERO_MESES][NUMERO_DIAS][];
@@ -27,7 +23,6 @@ public class ProyeExp {
     private static  int indiceMed = 0;
     
     
->>>>>>> Stashed changes
     public static void main(String[] args) {
 
         while (true) {
@@ -99,13 +94,9 @@ public class ProyeExp {
             }
         }
     }
-<<<<<<< Updated upstream
     
     public static Cita[] getAgendas() {
         return agendas;
     }
 
-=======
-  
->>>>>>> Stashed changes
 }
