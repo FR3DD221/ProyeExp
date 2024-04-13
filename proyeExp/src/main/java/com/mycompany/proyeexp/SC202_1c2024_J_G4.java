@@ -1,8 +1,10 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-package com.mycompany.sc202_1c2024_j_g4;
+package com.mycompany.proyeexp;
 
+import com.mycompany.proyeexp.Agendar_Citas;
+import com.mycompany.sc202_1c2024_j_g4.Medico;
 import javax.swing.JOptionPane;
 
 /**

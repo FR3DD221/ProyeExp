@@ -1,5 +1,6 @@
-package com.mycompany.sc202_1c2024_j_g4;
+package com.mycompany.proyeexp;
 
+import com.mycompany.sc202_1c2024_j_g4.Medico;
 import javax.swing.JOptionPane;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
