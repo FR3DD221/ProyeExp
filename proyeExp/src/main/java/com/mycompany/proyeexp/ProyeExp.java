@@ -3,6 +3,8 @@
 package com.mycompany.proyeexp;
 
 import javax.swing.JOptionPane;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 /**
  *
@@ -56,7 +58,6 @@ public class ProyeExp {
                 default:
                     JOptionPane.showMessageDialog(null, "Opción no válida. Por favor, ingrese un número del 1 al 5.");
             }
-
         }
     }
 }

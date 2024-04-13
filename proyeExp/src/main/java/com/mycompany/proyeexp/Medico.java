@@ -1,20 +1,21 @@
 package com.mycompany.proyeexp;
-
 import java.time.LocalDate;
+import java.time.LocalTime;
+
 
 public class Medico {
 
     private String nombre;
     private String especialidad;
-    private String horaAlmuerzo;
+    private LocalTime horaAlmuerzo;
 
-    public Medico(String nombre, String especialidad, String horaAlmuerzo) {
+    public Medico(String nombre, String especialidad, int Hora, int Minutos, int Segundos) {
         this.nombre = nombre;
         this.especialidad = especialidad;
-        this.horaAlmuerzo = horaAlmuerzo;
+        LocalTime horaAlmuerzoTemp = LocalTime.of(Hora, Minutos, Segundos);
+        this.horaAlmuerzo = horaAlmuerzoTemp;
     }
 
-    // Getters y setters
     public String getNombre() {
         return nombre;
     }
@@ -31,22 +32,11 @@ public class Medico {
         this.especialidad = especialidad;
     }
 
-    public String getHoraAlmuerzo() {
+    public LocalTime getHoraAlmuerzo() {
         return horaAlmuerzo;
     }
 
-    public void setHoraAlmuerzo(String horaAlmuerzo) {
+    public void setHoraAlmuerzo(LocalTime horaAlmuerzo) {
         this.horaAlmuerzo = horaAlmuerzo;
-    }
-
-    public boolean duranteAlmuerzo(String horaCita) {
-        // Implementa la lógica para verificar si la hora de la cita coincide con el almuerzo del médico
-        return horaCita.equals(horaAlmuerzo);
-    }
-
-    public boolean estaDisponible(LocalDate fechaCita) {
-        // Implementa la lógica para verificar si el médico está disponible en la fecha de la cita
-        // Puedes usar esta lógica para verificar la disponibilidad del médico en la fecha dada
-        return true; // Por ahora devuelve siempre true
     }
 }
