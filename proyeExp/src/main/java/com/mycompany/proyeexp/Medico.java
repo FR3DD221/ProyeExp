@@ -1,4 +1,4 @@
-package com.mycompany.sc202_1c2024_j_g4;
+package com.mycompany.proyeexp;
 
 import java.time.LocalDate;
 
