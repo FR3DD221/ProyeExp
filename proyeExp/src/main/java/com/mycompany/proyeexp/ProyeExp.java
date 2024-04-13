@@ -39,13 +39,29 @@ public class ProyeExp {
                         break;
                     }
                     String nombreMedico = JOptionPane.showInputDialog("Ingrese el nombre del medico\n");
-                    String[] opcionesMed = {"Medicina General", "Cirugia Ambulatoria", "Cirugia especializada"};
-                    int seleccion = JOptionPane.showOptionDialog(null, "Seleccione una Especialidad:", "Selección", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcionesMed, opcionesMed[0]);
-                    String select = String.valueOf(seleccion);  
-                    String horaAlmuerzo = JOptionPane.showInputDialog("Ingrese la hora de almuerzo\n");
-                    System.out.println(select);
+//                    String[] opcionesMed = {"Medicina General", "Cirugia Ambulatoria", "Cirugia especializada"};
+//                    int seleccion = JOptionPane.showOptionDialog(null, "Seleccione una Especialidad:", "Selección", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcionesMed, opcionesMed[0]);
+                    String esp = "";
+                    Boolean flag = true;
+                    do{
+                        String especialidad = JOptionPane.showInputDialog("Ingrese la especialidad del doctor\n");
+                        especialidad = especialidad.toUpperCase();
+                        if(especialidad.equals("MEDICINA GENERAL")||especialidad.equals("CIRUGIA AMBULATORIA")||especialidad.equals("CIRUGIA ESPECIALIZADA")){
+                            
+                            flag = false;
+                            esp = especialidad;
+                        
+                        }else{
+                            JOptionPane.showMessageDialog(null, "La especialdad no es valida.", "Error", JOptionPane.ERROR_MESSAGE);
+
+                        }
+                          
+
+                    }while(flag);
                     
-                    medicos[indiceMed] = new Medico(nombreMedico,select, Integer.parseInt(horaAlmuerzo));
+                    String horaAlmuerzo = JOptionPane.showInputDialog("Ingrese la hora de almuerzo\n");
+                    
+                    medicos[indiceMed] = new Medico(nombreMedico,esp, Integer.parseInt(horaAlmuerzo));
                     Agenda temp = medicos[indiceMed].getHorario();
                     temp.añadirHoraAlm(Integer.parseInt(horaAlmuerzo));
                     medicos[indiceMed].setHorario(temp);
@@ -80,15 +96,25 @@ public class ProyeExp {
                     String dia = JOptionPane.showInputDialog("Ingrese el dia de la cita\n");
                     String hora = JOptionPane.showInputDialog("Ingrese el hora de la cita\n");
                     
-                   
-                    String[] opciones1 = {"Medicina General", "Cirugia Ambulatoria", "Cirugia especializada"};
-                    int seleccionM = JOptionPane.showOptionDialog(null, "Seleccione una opción:", "Selección", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones1, opciones1[0]);
-                    String selected = String.valueOf(seleccionM);
+                    String esp1= "";
+                    Boolean flag1 = true;
+                    do{
+                        String especialidad = JOptionPane.showInputDialog("Ingrese el servicio que desea\n");
+                        especialidad = especialidad.toUpperCase();
+                        if(especialidad.equals("MEDICINA GENERAL")||especialidad.equals("CIRUGIA AMBULATORIA")||especialidad.equals("CIRUGIA ESPECIALIZADA")){
+                            
+                            flag1 = false;
+                            esp1 = especialidad;
+                        
+                        }else{
+                            JOptionPane.showMessageDialog(null, "La especialdad no es valida.", "Error", JOptionPane.ERROR_MESSAGE);
+
+                        }
+                          
+
+                    }while(flag1);
                     
-                    System.out.println(Integer.parseInt(mes));
-                    System.out.println(Integer.parseInt(dia));
-                    System.out.println(Integer.parseInt(hora));
-                    Medico dato = buscarMedicoDis(nombreCliente,telefono,selected,Integer.parseInt(mes),Integer.parseInt(dia),Integer.parseInt(hora));
+                    Medico dato = buscarMedicoDis(nombreCliente,telefono,esp1,Integer.parseInt(mes),Integer.parseInt(dia),Integer.parseInt(hora));
                     if(dato== null){
                        
                         JOptionPane.showMessageDialog(null, "Error, no hay medicos disponibles a esa hora y dia.", "ERROR", JOptionPane.WARNING_MESSAGE);
