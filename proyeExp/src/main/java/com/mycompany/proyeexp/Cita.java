@@ -1,5 +1,6 @@
 
 package com.mycompany.proyeexp;
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 
@@ -8,9 +9,9 @@ public class Cita {
     private String telefonoPaciente;
     private LocalTime horaCita;
     private Medico MedicoAsig;
-    private LocalTime fecha;
+    private LocalDate fecha;
     
-    public Cita (String nombrePaciente, String telefonoPaciente, int Hora, int Minutos, int Segundos, Medico MedicoTemp, LocalTime fechaCitap) {
+    public Cita (String nombrePaciente, String telefonoPaciente, int Hora, int Minutos, int Segundos, Medico MedicoTemp, LocalDate fechaCitap) {
         this.nombrePaciente = nombrePaciente;
         this.telefonoPaciente = telefonoPaciente;
         LocalTime horaCitaTemp = LocalTime.of(Hora, Minutos, Segundos);
@@ -18,11 +19,11 @@ public class Cita {
         this.MedicoAsig = MedicoTemp;
         this.fecha = fechaCitap;
     }   
-
+    
     public String getNombrePaciente() {
         return nombrePaciente;
     }
-
+    
     public void setNombrePaciente(String nombrePaciente) {
         this.nombrePaciente = nombrePaciente;
     }
@@ -51,11 +52,11 @@ public class Cita {
         this.MedicoAsig = MedicoAsig;
     }
 
-    public LocalTime getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalTime fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 }

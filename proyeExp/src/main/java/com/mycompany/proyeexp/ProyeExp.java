@@ -2,6 +2,7 @@
 
 package com.mycompany.proyeexp;
 
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 /**
@@ -9,12 +10,10 @@ import javax.swing.JOptionPane;
  * @author fredd
  */
 public class ProyeExp {;
-    private static final int MAX_MEDICOS = 5;
-    private static final int MAX_MESES = 12;
-    private static final int MAX_DIAS = 30;
+
     private static final int MAX_HORAS_DISP = 10;
-    private static Cita[][][] agenda = new Cita[MAX_MESES][MAX_DIAS][MAX_HORAS_DISP];
-    private static Medico[] medicos = new Medico[MAX_MEDICOS];
+    private static Medico[] medicos = new Medico[5];
+    private static Cita[] agendas = new Cita[365];
 
     public static void main(String[] args) {
 
@@ -49,4 +48,9 @@ public class ProyeExp {;
             }
         }
     }
+    
+    public static Cita[] getAgendas() {
+        return agendas;
+    }
+
 }

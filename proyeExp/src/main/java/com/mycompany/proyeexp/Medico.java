@@ -8,6 +8,7 @@ public class Medico {
     private String nombre;
     private String especialidad;
     private LocalTime horaAlmuerzo;
+    private Agenda horario;
 
     public Medico(String nombre, String especialidad, int Hora, int Minutos, int Segundos) {
         this.nombre = nombre;
@@ -39,4 +40,13 @@ public class Medico {
     public void setHoraAlmuerzo(LocalTime horaAlmuerzo) {
         this.horaAlmuerzo = horaAlmuerzo;
     }
+
+    public Agenda getHorario() {
+        return horario;
+    }
+
+    public void setHorario(Agenda horario) {
+        this.horario = horario;
+    }
+    
 }
