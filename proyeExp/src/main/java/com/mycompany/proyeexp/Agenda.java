@@ -43,16 +43,16 @@ public class Agenda {
     
     public void añadirHoraAlm(int Hora) {
         for (int i = 0; i < 12; i++) {
-            for (int j = 0; j < 30; i++) {
-                this.horario[i][j][Hora] = "ALMUERZO";
+            for (int j = 0; j < 30; j++) {
+                this.horario[i][j][buscarElemento(Hora)] = "ALMUERZO";
             }
         }
     }
     
     public void inicializarHorario() {
         for (int i = 0; i < 12; i++) {
-            for (int j = 0; j < 30; i++) {
-                for (int k = 0; j < 10; k++) {
+            for (int j = 0; j < 30; j++) {
+                for (int k = 0; k < 10; k++) {
                     this.horario[i][j][k] = "VACIO";
                 }
             }
@@ -89,13 +89,13 @@ public class Agenda {
     
     public void desaparecerCita(int mes, int dia, int hora, int tiempo) {
         for(int i = hora; i < hora + tiempo; i++) {
-            this.horario[mes][dia][i] = "VACIO";
+            this.horario[mes-1][dia-1][i] = "VACIO";
         } 
     }
     
     public int verificarEspacio (int dia, int mes, int hora, int tiempo) {
         for(int i = hora; i < hora + tiempo; i++) {
-            if (!(this.horario[mes][dia][i].equals("VACIO")) && !(this.horario[mes][dia][i].equals("ALMUERZO"))) {
+            if (!(this.horario[mes-1][dia-1][buscarElemento(i)].equals("VACIO"))) {
                 return 0;
             }
         }
@@ -104,7 +104,7 @@ public class Agenda {
         
     public void insertarCita(String informacion, int mes, int dia, int hora, int tiempo) {
         for(int i = hora; i < hora + tiempo; i++) {
-            this.horario[mes][dia][i] = informacion;
+            this.horario[mes-1][dia-1][buscarElemento(i)] = informacion;
         } 
     }
     
@@ -146,6 +146,5 @@ public class Agenda {
         
         return null;
     }
-
     
 }

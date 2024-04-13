@@ -15,6 +15,7 @@ public class Medico {
         this.especialidad = especialidad;
         LocalTime horaAlmuerzoTemp = LocalTime.of(Hora, 0, 0);
         this.horaAlmuerzo = horaAlmuerzoTemp;
+        this.horario = new Agenda();
     }
 
     public String getNombre() {
@@ -45,8 +46,8 @@ public class Medico {
         return horario;
     }
 
-    public void setHorario(Agenda horario) {
-        this.horario = horario;
-    }
+//    public void setHorario(Agenda horario) {
+//        this.horario = horario;
+//    }
     
 }
