@@ -3,29 +3,16 @@
 package com.mycompany.proyeexp;
 
 import javax.swing.JOptionPane;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 /**
  *
  * @author fredd
  */
-public class ProyeExp {
-    private static final int NUMERO_MESES = 12;
-    private static final int NUMERO_DIAS = 30;
-    private static Cita[][][] agenda = new Cita[NUMERO_MESES][NUMERO_DIAS][];
-    private static final int MAX_MEDICOS = 3;
-    private static final int MAX_HORAS_MEDICO = 10;
-    private static Medico[][] medicos = new Medico[MAX_MEDICOS][NUMERO_MESES * NUMERO_DIAS * MAX_HORAS_MEDICO];
+public class ProyeExp {;
+    private static final int MAX_MEDICOS = 5;
+    private static Medico[] medicos = new Medico[MAX_MEDICOS];
 
     public static void main(String[] args) {
-
-        // Inicialización del sistema
-        for (int mes = 0; mes < NUMERO_MESES; mes++) {
-            for (int dia = 0; dia < NUMERO_DIAS; dia++) {
-                agenda[mes][dia] = new Cita[MAX_HORAS_MEDICO];
-            }
-        }
 
         boolean continuarProg = true;
 
