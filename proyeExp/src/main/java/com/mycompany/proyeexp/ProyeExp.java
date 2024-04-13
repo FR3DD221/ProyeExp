@@ -9,12 +9,25 @@ import javax.swing.JOptionPane;
  *
  * @author fredd
  */
+<<<<<<< Updated upstream
 public class ProyeExp {;
 
     private static final int MAX_HORAS_DISP = 10;
     private static Medico[] medicos = new Medico[5];
     private static Cita[] agendas = new Cita[365];
 
+=======
+public class ProyeExp {
+    private static final int NUMERO_MESES = 12;
+    private static final int NUMERO_DIAS = 30;
+    private static Cita[][][] agenda = new Cita[NUMERO_MESES][NUMERO_DIAS][];
+    private static final int MAX_MEDICOS = 5;
+    private static final int MAX_HORAS_MEDICO = 10;
+    private static Medico[] medicos = new Medico[MAX_MEDICOS];
+    private static  int indiceMed = 0;
+    
+    
+>>>>>>> Stashed changes
     public static void main(String[] args) {
 
         while (true) {
@@ -30,9 +43,47 @@ public class ProyeExp {;
             switch (opcion) {
                 case "1":
                     //Registro_Medicos.nuevo_Registro_Medicos();
+                    if(indiceMed == 5){
+        
+                        JOptionPane.showMessageDialog(null, "Ya se almaceno la cantidad de 5 medicos.", "Error", JOptionPane.ERROR_MESSAGE);
+                        break;
+                    }
+                    String nombreMedico = JOptionPane.showInputDialog("Ingrese el nombre del medico\n");
+                    String especialidad = JOptionPane.showInputDialog("Ingrese la especialidad del medico\n");
+                    String horaAlmuerzo = JOptionPane.showInputDialog("Ingrese la hora de almuerzo\n");
+                    
+       
+                    medicos[indiceMed] = new Medico(nombreMedico,especialidad, horaAlmuerzo);
+                    indiceMed+=1;
+                    
+
                     break;
                 case "2":
                     //Agendar_Citas.agregarNuevaCita();
+                    
+                    String[] opciones = new String[indiceMed];
+                    
+                    for(int i = 0; i <= indiceMed-1; i++){   
+//                        System.out.println(medicos[i].getNombre());
+                        opciones[i] = medicos[i].getNombre();
+                        
+                    }
+                    
+                    
+                    String opcionSeleccionada = (String) JOptionPane.showInputDialog(
+                                                    null, 
+                                                    "Seleccione un Doctor:",
+                                                    "",
+                                                    JOptionPane.QUESTION_MESSAGE, 
+                                                    null, 
+                                                    opciones, 
+                                                    opciones[0]);
+                    
+//                    for(int i = 0; i <= indiceMed; i++){
+//                        
+//                        JOptionPane.showMessageDialog(null, "El Doctor es: " + medicos[i].getNombre()+","+ medicos[i].getEspecialidad() +","+ medicos[i].getEspecialidad());
+//                        
+//                    }
                     break;
                 case "3":
                     /*buscar y eliminar citas --> dejar espacio vació*/
@@ -48,9 +99,13 @@ public class ProyeExp {;
             }
         }
     }
+<<<<<<< Updated upstream
     
     public static Cita[] getAgendas() {
         return agendas;
     }
 
+=======
+  
+>>>>>>> Stashed changes
 }
