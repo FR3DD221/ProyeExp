@@ -114,6 +114,8 @@ public class ProyeExp {
 
                     }while(flag1);
                     
+                    System.out.println();
+                    
                     Medico dato = buscarMedicoDis(nombreCliente,telefono,esp1,Integer.parseInt(mes),Integer.parseInt(dia),Integer.parseInt(hora));
                     if(dato== null){
                        

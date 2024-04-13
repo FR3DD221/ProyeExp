@@ -125,11 +125,11 @@ public class Agenda {
     public int buscarEsp(Medico med) {
         String esp = med.getEspecialidad();
         
-        if (esp.equals("Medicina General")) {
+        if (esp.equals("MEDICINA GENERAL")) {
             return 1;
-        } else if (esp.equals("Cirugia Ambulatoria")) {
+        } else if (esp.equals("CIRUGIA AMBULATORIA")) {
             return 2;
-        } else if (esp.equals("Cirugia especializada")) {
+        } else if (esp.equals("CIRUGIA ESPECIALIZADA")) {
             return 3;
         }
         
