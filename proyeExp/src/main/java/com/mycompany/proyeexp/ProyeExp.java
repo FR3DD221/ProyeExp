@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author fredd
+ * @author autor
  */
 public class ProyeExp {
 
@@ -85,7 +85,6 @@ public class ProyeExp {
                     indiceMed+=1;
                     break;
                     
-                    
                 case "2":
                     
                     if(indiceMed > 0){
@@ -127,12 +126,9 @@ public class ProyeExp {
                                     JOptionPane.showMessageDialog(null, "El mes debe ser valido.", "Error", JOptionPane.ERROR_MESSAGE);
                                 }
 
-
                             } catch (NumberFormatException e) {
                                 JOptionPane.showMessageDialog(null, "El mes debe ser un valor numerico ENTERO.", "Error", JOptionPane.ERROR_MESSAGE);
                             }
-
-
 
 
                         }while(flagMes);
@@ -153,7 +149,6 @@ public class ProyeExp {
                                 JOptionPane.showMessageDialog(null, "El Dia debe ser un valor numerico ENTERO.", "Error", JOptionPane.ERROR_MESSAGE);
                             }
                         }while(flagDia);       
-
                         int esp8= 0;
                         Boolean flagHora = true;
                         do{
@@ -170,7 +165,6 @@ public class ProyeExp {
                                 JOptionPane.showMessageDialog(null, "La hora debe ser un valor numerico ENTERO.", "Error", JOptionPane.ERROR_MESSAGE);
                             }
                         }while(flagHora); 
-
 
                         String esp1= "";
                         Boolean flag1 = true;
@@ -201,18 +195,13 @@ public class ProyeExp {
                             JOptionPane.showMessageDialog(null, "El valor de la cita sera de: "+ dato.getHorario().calcularCosto1(esp6, esp7, horaDinero), "Aviso", JOptionPane.INFORMATION_MESSAGE);
                             JOptionPane.showMessageDialog(null, "Se agendo correctamente la cita.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                         }
-                        
-                    
+
                     }else{
                         JOptionPane.showMessageDialog(null, "Debe registrar un medico primero.", "Error", JOptionPane.ERROR_MESSAGE);
 
-                        
                     }
                     
-                    
-                    
                     break;
-                    
                     
                     
                 case "3":
@@ -229,7 +218,6 @@ public class ProyeExp {
                             }
                         }while(case3);
 
-
                         String[] opciones = new String[indiceMed];
                         for(int i = 0; i <= indiceMed-1; i++){   
                             opciones[i] = medicos[i].getNombre();
@@ -242,7 +230,6 @@ public class ProyeExp {
                                                         null, 
                                                         opciones, 
                                                         opciones[0]);
-
 
                         int case3_mes= 0;
                         Boolean flag3_mes = true;
@@ -261,9 +248,6 @@ public class ProyeExp {
                                 JOptionPane.showMessageDialog(null, "El mes debe ser un valor numerico ENTERO.", "Error", JOptionPane.ERROR_MESSAGE);
                             }
                         }while(flag3_mes); 
-
-
-
 
                         int case3_dia= 0;
                         Boolean flag3_dia = true;
@@ -292,38 +276,29 @@ public class ProyeExp {
                                     if(agendas[i].getFecha().equals(diaCita)){
 
                                         agendas[i].getMedicoAsig().getHorario().eliminarCita(case3_NombreCliente, doctorSelected, diaCita);
+                                        indiceCitas-=1;
                                         agendas[i] = null;
                                         JOptionPane.showMessageDialog(null, "Se elimino la cita CORRECTAMENTE.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                                         flagCita = true;
                                         break;
-
-
                                     }else{
                                         i++;
                                     }
-
                                 }else{
                                     i++;
                                 }
-
                             }else{
                                 i++;
                             }
                             flagCita = false;
-
                         }
                         if(flag = false){
                             JOptionPane.showMessageDialog(null, "Ese cliente no tiene citas asignadas.", "Error", JOptionPane.ERROR_MESSAGE);
-
                         }
                     }else{
                         JOptionPane.showMessageDialog(null, "No hay medicos registrados aún.", "Error", JOptionPane.ERROR_MESSAGE);
-
                     }
-                    
                     break;
-                    
-                    
                 case "4":
                     
                     if(indiceMed > 0){
@@ -339,9 +314,6 @@ public class ProyeExp {
                                                         null, 
                                                         opciones4, 
                                                         opciones4[0]);
-
-
-
                         int case4_mes= 0;
                         Boolean flag4_mes = true;
                         do{
@@ -384,7 +356,7 @@ public class ProyeExp {
                             if(doctorSelected4.equals(medicos[i].getNombre())){
 
                                 info = medicos[i].getHorario().imprimiDatos(case4_mes-1, case4_dia-1);
-                                JOptionPane.showMessageDialog(null, "La agenda del doctor: "+ medicos[i].getNombre()+ " es : " + "\n"+ info, "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "La agenda del medico: "+ medicos[i].getNombre()+ " es : " + "\n"+ info, "Aviso", JOptionPane.INFORMATION_MESSAGE);
                                 int horaDinero = 0;
                                 if(medicos[i].getEspecialidad().equals("MEDICINA GENERAL")){
                                     horaDinero = 1;
@@ -394,19 +366,13 @@ public class ProyeExp {
                                     horaDinero = 3;
                                 }
                                 JOptionPane.showMessageDialog(null, "El monto a recaudar ese dia sera de: "+ medicos[i].getHorario().calcularCosto(case4_mes, case4_dia, horaDinero), "Aviso", JOptionPane.INFORMATION_MESSAGE);
-
-
                             }
                         }
                         
                     }else{
                         JOptionPane.showMessageDialog(null, "Debe registrar un medico primero", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-
                     }
-                    
-                   
-                    
-                    
+          
                     break;
                 case "5":
                     JOptionPane.showMessageDialog(null, "Saliendo del programa.");
@@ -434,7 +400,6 @@ public class ProyeExp {
                         agendas[indiceCitas] = temp;
                         indiceCitas++;
                         return medicos[i];
-                        
                     }
                 }
             }
