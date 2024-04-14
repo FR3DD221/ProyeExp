@@ -38,7 +38,7 @@ public class Agenda {
             return 0;
         }
         
-        insertarCita(nuevaCita.getNombrePaciente() + nuevaCita.getTelefonoPaciente(), mes, dia, horaCita, horasEsp);
+        insertarCita(nuevaCita.getNombrePaciente() +","+ nuevaCita.getTelefonoPaciente(), mes, dia, horaCita, horasEsp);
         
         return 2;
         
@@ -162,6 +162,16 @@ public class Agenda {
         }
     }
     
+    public String imprimiDatos(int i, int j) {
+        String lineText = "";
+        for (int k = 0; k < 10; k++) {
+            lineText+= this.horario[i][j][k];
+            lineText+= "\n";
+        }
+        return lineText;
+        
+    }
+    
     public float calcularCosto(int mes, int dia, int horas){
 
         LocalDate tempD = LocalDate.of(2024, mes, dia);
@@ -172,6 +182,28 @@ public class Agenda {
                 cantCitas++;
             }
         }
+
+        if (tempD.getDayOfWeek() == DayOfWeek.SATURDAY || tempD.getDayOfWeek() == DayOfWeek.SUNDAY) {
+            cantCitas = (cantCitas * horas * 40000);
+            cantCitas = (float) (cantCitas + cantCitas * 0.13);
+            return cantCitas;
+        } 
+
+        cantCitas = (cantCitas * horas * 25000);
+        cantCitas = (float) (cantCitas + cantCitas * 0.13);
+        return cantCitas;
+    }
+    
+        public float calcularCosto1(int mes, int dia, int horas){
+
+        LocalDate tempD = LocalDate.of(2024, mes, dia);
+
+        float cantCitas = 1;
+//        for (int i = 0; i < 10; i++){
+//            if (!(this.horario[mes-1][dia-1][i].equals("VACIO")) && !(this.horario[mes-1][dia-1][i].equals("ALMUERZO"))) {
+//                cantCitas++;
+//            }
+//        }
 
         if (tempD.getDayOfWeek() == DayOfWeek.SATURDAY || tempD.getDayOfWeek() == DayOfWeek.SUNDAY) {
             cantCitas = (cantCitas * horas * 40000);
