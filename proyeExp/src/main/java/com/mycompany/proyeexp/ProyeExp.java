@@ -16,6 +16,8 @@ public class ProyeExp {
     private static Medico[] medicos = new Medico[5];
     private static Cita[] agendas = new Cita[365];
     private static  int indiceMed = 0;
+    private static  int indiceCitas = 0;
+
     
     
     public static void main(String[] args) {
@@ -24,7 +26,7 @@ public class ProyeExp {
             String opcion = JOptionPane.showInputDialog("MENU PRINCIPAL\n"
                     + "1. Registro de médicos.\n"
                     + "2. Agendar cita \n"
-                    + "3. Modificar cita \n"
+                    + "3. Eliminar cita \n"
                     + "4. Mostrar agenda\n"
                     + "5. Salir \n"
                     + "6. TEMPORAL: Imprimir Dias y horas disponibles"
@@ -39,8 +41,6 @@ public class ProyeExp {
                         break;
                     }
                     String nombreMedico = JOptionPane.showInputDialog("Ingrese el nombre del medico\n");
-//                    String[] opcionesMed = {"Medicina General", "Cirugia Ambulatoria", "Cirugia especializada"};
-//                    int seleccion = JOptionPane.showOptionDialog(null, "Seleccione una Especialidad:", "Selección", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcionesMed, opcionesMed[0]);
                     String esp = "";
                     Boolean flag = true;
                     do{
@@ -60,12 +60,10 @@ public class ProyeExp {
                     }while(flag);
                     
                     String horaAlmuerzo = JOptionPane.showInputDialog("Ingrese la hora de almuerzo\n");
-                    
                     medicos[indiceMed] = new Medico(nombreMedico,esp, Integer.parseInt(horaAlmuerzo));
                     Agenda temp = medicos[indiceMed].getHorario();
                     temp.añadirHoraAlm(Integer.parseInt(horaAlmuerzo));
                     medicos[indiceMed].setHorario(temp);
-                    //medicos[indiceMed].getHorario().imprimir();
                     indiceMed+=1;
                     
 
@@ -114,7 +112,6 @@ public class ProyeExp {
 
                     }while(flag1);
                     
-                    System.out.println();
                     
                     Medico dato = buscarMedicoDis(nombreCliente,telefono,esp1,Integer.parseInt(mes),Integer.parseInt(dia),Integer.parseInt(hora));
                     if(dato== null){
@@ -153,16 +150,16 @@ public class ProyeExp {
         for (int i = 0; i < indiceMed; i++) {
             if (medicos[i].getEspecialidad().equals(especialidad)) {
                 int horasEsp = medicos[i].getHorario().buscarEsp(medicos[i]);
-                medicos[i].getHorario().imprimir();
                 int puede = medicos[i].getHorario().verificarEspacio(dia, mes, hora, horasEsp);
-                System.out.println(puede);
-
+                
                 if (puede != 0) {
                     Cita temp = new Cita(nombreCliente, numeroTelefono, hora, 0, 0, medicos[i], LocalDate.of(2024, mes, dia));
                     if (medicos[i].getHorario().agregarCita(temp) == 2) {
                         medicos[i].getHorario().agregarCita(temp);
-                        System.out.println(medicos[i].getNombre());
+                        agendas[indiceCitas] = temp;
+                        indiceCitas++;
                         return medicos[i];
+                        
                     }
                 }
             }

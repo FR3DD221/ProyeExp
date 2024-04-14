@@ -22,7 +22,7 @@ public class Agenda {
     public int agregarCita(Cita nuevaCita) {
         LocalDate fechaTemp = nuevaCita.getFecha();
         LocalTime horaTemp = nuevaCita.getHoraCita();
-        int mes = fechaTemp.getDayOfYear();
+        int mes = fechaTemp.getMonthValue();
         int dia = fechaTemp.getDayOfMonth();
         int hora = horaTemp.getHour();
         
@@ -93,13 +93,12 @@ public class Agenda {
     
     public void desaparecerCita(int mes, int dia, int hora, int tiempo) {
         for(int i = hora; i < hora + tiempo; i++) {
-            this.horario[mes-1][dia-1][buscarElemento(i)] = "VACIO";
+            this.horario[mes-1][dia-1][i] = "VACIO";
         } 
     }
     
     public int verificarEspacio (int dia, int mes, int hora, int tiempo) {
         for(int i = hora; i < hora + tiempo; i++) {
-            System.out.println(i);
             if (!(this.horario[mes-1][dia-1][buscarElemento(i)].equals("VACIO"))) {
                 return 0;
             }
@@ -109,7 +108,7 @@ public class Agenda {
         
     public void insertarCita(String informacion, int mes, int dia, int hora, int tiempo) {
         for(int i = hora; i < hora + tiempo; i++) {
-            this.horario[mes-1][dia-1][buscarElemento(i)] = informacion;
+            this.horario[mes-1][dia-1][i] = informacion;
         } 
     }
     
