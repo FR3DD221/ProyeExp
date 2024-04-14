@@ -2,6 +2,7 @@
 package com.mycompany.proyeexp;
 
 import static com.mycompany.proyeexp.ProyeExp.getAgendas;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -159,6 +160,28 @@ public class Agenda {
                 }
             }
         }
+    }
+    
+    public float calcularCosto(int mes, int dia, int horas){
+
+        LocalDate tempD = LocalDate.of(2024, mes, dia);
+
+        float cantCitas = 0;
+        for (int i = 0; i < 10; i++){
+            if (!(this.horario[mes-1][dia-1][i].equals("VACIO")) && !(this.horario[mes-1][dia-1][i].equals("ALMUERZO"))) {
+                cantCitas++;
+            }
+        }
+
+        if (tempD.getDayOfWeek() == DayOfWeek.SATURDAY || tempD.getDayOfWeek() == DayOfWeek.SUNDAY) {
+            cantCitas = (cantCitas * horas * 40000);
+            cantCitas = (float) (cantCitas + cantCitas * 0.13);
+            return cantCitas;
+        } 
+
+        cantCitas = (cantCitas * horas * 25000);
+        cantCitas = (float) (cantCitas + cantCitas * 0.13);
+        return cantCitas;
     }
     
 }

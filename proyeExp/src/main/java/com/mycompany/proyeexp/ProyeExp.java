@@ -162,22 +162,32 @@ public class ProyeExp {
                     }while(flag1);
                     Medico dato = buscarMedicoDis(esp4.toUpperCase(),esp5,esp1,esp6,esp7,esp8);
                     if(dato== null){
+                       
                         JOptionPane.showMessageDialog(null, "Error, no hay medicos disponibles a esa hora y dia.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                        
                     }else{
-                        JOptionPane.showMessageDialog(null, "Se agendo correctamente la cita.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                        int horaDinero = 0;
+                        if(esp1.equals("MEDICINA GENERAL")){
+                            horaDinero = 1;
+                        }else if(esp1.equals("CIRUGIA AMBULATORIA")){
+                            horaDinero = 2;
+                        }else if(esp1.equals("CIRUGIA ESPECIALIZADA")){
+                            horaDinero = 3;
+                        }
+                        JOptionPane.showMessageDialog(null, "El valor de la cita sera de: "+ dato.getHorario().calcularCosto(esp6, esp7, horaDinero), "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Se agendo correctamente la cita.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                     }
                     break;
                     
                     
                     
                 case "3":
-                    /*buscar y eliminar citas --> dejar espacio vació*/
                     Boolean case3 = true;
                     String case3_NombreCliente = "";
                     do{
                         String nombreCliente = JOptionPane.showInputDialog("Ingrese el nombre del cliente con cita a eliminar\n");
                         if(nombreCliente.isBlank()||nombreCliente.isEmpty()){
-                            JOptionPane.showMessageDialog(null, "Ingrese el nombre del cliente.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "Ingrese el nombre del cliente.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                         }else{
                             case3_NombreCliente = nombreCliente.toUpperCase();
                             case3 = false;
@@ -241,7 +251,7 @@ public class ProyeExp {
                                     
                                     agendas[i].getMedicoAsig().getHorario().eliminarCita(case3_NombreCliente, doctorSelected, diaCita);
                                     agendas[i] = null;
-                                    JOptionPane.showMessageDialog(null, "Se elimino la cita CORRECTAMENTE.", "Error", JOptionPane.INFORMATION_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, "Se elimino la cita CORRECTAMENTE.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                                     flagCita = true;
                                     break;
                             
@@ -264,10 +274,9 @@ public class ProyeExp {
                         JOptionPane.showMessageDialog(null, "Ese cliente no tiene citas asignadas.", "Error", JOptionPane.ERROR_MESSAGE);
 
                     }
-
-                    
-                    
                     break;
+                    
+                    
                 case "4":
                     /*mostrar info diaria de citas de cada médico y ganancias diarias*/
                     break;
@@ -305,21 +314,5 @@ public class ProyeExp {
         return null;
     }
     
-    public static Agenda eliminarCitas(String case3_NombreCliente, String doctorSelected, LocalDate diaCita){
-        
-        for(int i =0; i< indiceCitas;){
-            if(agendas[i].getNombrePaciente()==case3_NombreCliente && agendas[i].getMedicoAsig().getNombre()==doctorSelected && agendas[i].getFecha()==diaCita){
-
-                System.out.println("1");
-            }
-            else{
-                i++;
-            }
-        }
-        
-        return null;
-    
-    }
-
 
 }
