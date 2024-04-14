@@ -80,7 +80,7 @@ public class Agenda {
         
         LocalDate fechaTemp = nuevaCita.getFecha();
         LocalTime horaTemp = nuevaCita.getHoraCita();
-        int mes = fechaTemp.getDayOfYear();
+        int mes = fechaTemp.getMonthValue();
         int dia = fechaTemp.getDayOfMonth();
         int hora = horaTemp.getHour();
         
